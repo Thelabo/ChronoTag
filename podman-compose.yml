@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: go-api-image
+    container_name: go-redis-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+  
+  redis:
+    image: redis:7
+    container_name: go-redis
+    ports:
+      - "6379:6379"
